@@ -4,7 +4,9 @@ export const options = {
   vus: 10,
   duration: '30s',
 };
-export default function () {
-  http.get('https://renditionproperties.com');
+
+export default function homepage () {
+  //http.get('https://renditionproperties.com');
+  console.log("test");
   sleep(1);
 }
