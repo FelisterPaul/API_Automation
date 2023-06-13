@@ -30,3 +30,7 @@ https://github.com/kamauvick/K6Auto
 // kafka
 // confluentS
 // message queues
+//return response status of the post api
+//print the response. 
+
+//Checks on k6.
