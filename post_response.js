@@ -7,3 +7,8 @@ export default function () {
     'is status 200': (r) => r.status === 200,
   });
 }
+//check(res, {
+  //if( response.status === 200){
+    //return "Is response 200"
+//}
+//});

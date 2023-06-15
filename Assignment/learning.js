@@ -33,4 +33,4 @@ https://github.com/kamauvick/K6Auto
 //return response status of the post api
 //print the response. 
 
-//Checks on k6.
+//gitChecks on k6.
