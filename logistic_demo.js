@@ -6,7 +6,7 @@ export default function () {
 import http from 'k6/http';
 
 export default function () {
-  const res = http.get('https://renditionproperties.com/');
+  const res = http.get('https://renditionproperties.com');
   check(res, {
     'is status 200': (r) => r.status === 200,
   });
