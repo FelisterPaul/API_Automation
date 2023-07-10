@@ -6,7 +6,7 @@ export const options = {
 };
 
 export default function homepage () {
-  const response = http.get('https://renditionproperties.com');
+  const response = http.get('https://shop.renditionproperties.com');
   console.log("test");
   sleep(1);
 }
