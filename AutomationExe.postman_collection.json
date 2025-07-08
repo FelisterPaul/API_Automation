@@ -1,0 +1,967 @@
+{
+	"info": {
+		"_postman_id": "3fc77802-77e2-4bf9-badf-1b8ea0b1d251",
+		"name": "AutomationExe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46476185",
+		"_collection_link": "https://www.postman.com/mwendepaul/workspace/mwende-paul-s-workspace/collection/46476185-3fc77802-77e2-4bf9-badf-1b8ea0b1d251?action=share&source=collection_link&creator=46476185"
+	},
+	"item": [
+		{
+			"name": "Get All Products List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response is less than 2seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"pm.test(\"Response body is valid JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"pm.test(\"Response body has correct number of products\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.products.length).to.equal(34);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/productsList",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"productsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Brand List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    });\r",
+							"pm.test(\"Response time is less than 2seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"pm.test(\"Response body contains brands list\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"brands\");\r",
+							"    });\r",
+							"pm.test(\"Response body contains Polo brand\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Polo\");\r",
+							"});\r",
+							"pm.test(\"Response body contains H&M brand\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"H&M\");\r",
+							"});\r",
+							"pm.test(\"Response body contains two brands\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.brands.length).to.equal(34)   \r",
+							"});\r",
+							"pm.test(\"Response body contains correct brand ids\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.brands[0].id).to.equal(1);\r",
+							"    pm.expect(jsonData.brands[1].id).to.equal(2);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/brandsList",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"brandsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"pm.test(\"Response body contains product name 'Blue Top'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Blue Top\");\r",
+							"});\r",
+							"pm.test(\"Response body contains product price 'Rs. 500'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Rs. 500\");\r",
+							"});\r",
+							"pm.test(\"Response body contains product brand 'Polo'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Polo\");\r",
+							"});\r",
+							"pm.test(\"Response body contains product category 'Tops'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Tops\");\r",
+							"});\r",
+							"pm.test(\"Response body contains product usertype 'Women'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Women\");\r",
+							"});\r",
+							"pm.test(\"Response body contains product category 'Tops'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Tops\");\r",
+							"});\r",
+							"pm.test(\"Response body is valid JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "search_product",
+							"value": "Blue Top",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/searchProduct",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"searchProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Account Details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () { \r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response is less than 2seconds\", function() {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"pm.test(\"User id is 17867\", function () {           \r",
+							"    pm.expect(pm.response.json().user.id).to.eql(17867);\r",
+							"});\r",
+							"pm.test(\"User name is Rana\", function () {\r",
+							"    pm.expect(pm.response.json().user.name).to.eql(\"Rana\");\r",
+							"});\r",
+							"pm.test(\"Response schema is valid\", function () {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response).to.have.all.keys('responseCode', 'user');\r",
+							"    pm.expect(response.user).to.have.all.keys('id', 'name', 'email', 'title', 'birth_day', 'birth_month', 'birth_year', 'first_name', 'last_name', 'company', 'address1', 'address2', 'country', 'state', 'city', 'zipcode');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/getUserDetailByEmail?email",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"getUserDetailByEmail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search without Parameters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"status code is 200\",function (){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"pm.test(\"Response time is less than 2000ms\", function (){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"pm.test(\"schema validation\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"});\r",
+							"pm.test(\"response body contains 'search_product'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('search_product');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/searchProduct",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"searchProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"pm.test(\"schema is valid\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"});\r",
+							"pm.test(\"response body contains 'message'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('message');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "felistermwende275@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Test1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/verifyLogin",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"verifyLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login without Param",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/verifyLogin",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"verifyLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login with invalid credentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less tha 2seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"pm.test(\"Response body contains 'User not found!'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('User not found!');\r",
+							"});\r",
+							"pm.test(\"Response body contains 'responseCode': 404\", function () {\r",
+							"    pm.response.to.have.jsonBody({  \r",
+							"        \"responseCode\": 404\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "testuser",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "testuser@example.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Test1234",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Mr",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "15",
+							"type": "text"
+						},
+						{
+							"key": "birth_month",
+							"value": "March",
+							"type": "text"
+						},
+						{
+							"key": "birth_year",
+							"value": "1995",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "John",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Doe",
+							"type": "text"
+						},
+						{
+							"key": "company",
+							"value": "ABC Ltd",
+							"type": "text"
+						},
+						{
+							"key": "address1",
+							"value": "123 Street Name",
+							"type": "text"
+						},
+						{
+							"key": "address2",
+							"value": "Apt 456",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "United States",
+							"type": "text"
+						},
+						{
+							"key": "zipcode",
+							"value": "12345",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "NY",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "New York",
+							"type": "text"
+						},
+						{
+							"key": "mobile_number",
+							"value": "+11234567890",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/verifyLogin",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"verifyLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Check if the status code is 200\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000); // Check if the response time is less than 200ms\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response body contains 'Email'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('Email'); // Check if the response body contains 'Email'\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Log request details before sending the request\r",
+							"// Log the HTTP method of the request in a more descriptive manner\r",
+							"console.log(`HTTP Request Method: ${pm.request.method}`);\r",
+							"console.log('Request URL:', pm.request.url.toString());\r",
+							"console.log('Request Headers:', JSON.stringify(pm.request.headers.toJSON(), null, 2));\r",
+							"console.log('Request Body:', pm.request.body.raw);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Mwesh",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "felisewueuue4@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Test1234",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Mr",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "14",
+							"type": "text"
+						},
+						{
+							"key": "birth_month",
+							"value": "Feb",
+							"type": "text"
+						},
+						{
+							"key": "birth_year",
+							"value": "1995",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "Mwende",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Paul",
+							"type": "text"
+						},
+						{
+							"key": "company",
+							"value": "ABC Ltd",
+							"type": "text"
+						},
+						{
+							"key": "address1",
+							"value": "123 Street Name",
+							"type": "text"
+						},
+						{
+							"key": "address2",
+							"value": "Apt 456",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "United States",
+							"type": "text"
+						},
+						{
+							"key": "zipcode",
+							"value": "12345",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "NY",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "New York",
+							"type": "text"
+						},
+						{
+							"key": "mobile_number",
+							"value": "+11234567890",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/createAccount",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"createAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"pm.test(\"Response body contains 'User updated!'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('User updated!');\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Mwesh",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "felisewueuue4@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Test1234",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Mr",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "14",
+							"type": "text"
+						},
+						{
+							"key": "birth_month",
+							"value": "Feb",
+							"type": "text"
+						},
+						{
+							"key": "birth_year",
+							"value": "1995",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "Mwende",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Paul",
+							"type": "text"
+						},
+						{
+							"key": "company",
+							"value": "ABC Ltd",
+							"type": "text"
+						},
+						{
+							"key": "address1",
+							"value": "123 Street Name",
+							"type": "text"
+						},
+						{
+							"key": "address2",
+							"value": "Apt 456",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "United States",
+							"type": "text"
+						},
+						{
+							"key": "zipcode",
+							"value": "12345",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "NY",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "New York",
+							"type": "text"
+						},
+						{
+							"key": "mobile_number",
+							"value": "+11234567890",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/updateAccount",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"updateAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User account detail by email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"pm.test(\"User details are returned\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.user).to.have.property('id');\r",
+							"    pm.expect(jsonData.user).to.have.property('name');\r",
+							"    pm.expect(jsonData.user).to.have.property('email');\r",
+							"    pm.expect(jsonData.user).to.have.property('title');\r",
+							"    pm.expect(jsonData.user).to.have.property('birth_day');\r",
+							"    pm.expect(jsonData.user).to.have.property('birth_month');\r",
+							"    pm.expect(jsonData.user).to.have.property('birth_year');\r",
+							"    pm.expect(jsonData.user).to.have.property('first_name');\r",
+							"    pm.expect(jsonData.user).to.have.property('last_name');\r",
+							"    pm.expect(jsonData.user).to.have.property('company');\r",
+							"    pm.expect(jsonData.user).to.have.property('address1');\r",
+							"    pm.expect(jsonData.user).to.have.property('address2');\r",
+							"    pm.expect(jsonData.user).to.have.property('country');\r",
+							"    pm.expect(jsonData.user).to.have.property('state');\r",
+							"    pm.expect(jsonData.user).to.have.property('city');\r",
+							"    pm.expect(jsonData.user).to.have.property('zipcode');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/getUserDetailByEmail?email=felisewueuue4@gmail.com",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"getUserDetailByEmail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "felisewueuue4@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE to Verify Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"response time is less than 2seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/verifyLogin",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"verifyLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE User Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2seconds\", function () {\r",
+							"    pm.collectionVariables.set(\"responseTime\", pm.response.responseTime);\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "felistermwende275@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Test1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/deleteAccount",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"deleteAccount"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "responseTime",
+			"value": ""
+		},
+		{
+			"key": "responseMessage",
+			"value": ""
+		}
+	]
+}
