@@ -1,4 +1,5 @@
 **Automated API Testing with Postman CLI and GitHub Actions**
+
 This project uses Postman CLI to run API tests automatically every time changes are pushed to the repository. The tests are defined in a Postman Collection and executed in a CI environment using GitHub Actions.
 
 **Workflow Overview**
